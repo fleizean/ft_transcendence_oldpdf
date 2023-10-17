@@ -13,8 +13,8 @@ export class OperationClaim {
     explanation: number;
 
     @Column()
-    descriotion: string;
+    description: string;
 
-    @ManyToOne(() => UserOperationClaim, (UserOperationClaim) => UserOperationClaim.operationClaimId)
+    @ManyToOne(() => UserOperationClaim, (userOperationClaim) => userOperationClaim.operationClaimId)
     userOperationClaims: UserOperationClaim[];
 }

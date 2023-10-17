@@ -1,9 +1,12 @@
 import { ValidationPipe } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
 import { ConfigService } from '@nestjs/config';
+import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import * as path from 'path';
+import * as dotenv from 'dotenv';
+import * as fs from 'fs'; // JSON dosyası oluşturmak için fs modülünü ekleyin
 
 async function bootstrap() {
   const app: NestExpressApplication = await NestFactory.create(AppModule, {
@@ -15,17 +18,23 @@ async function bootstrap() {
     credentials: true,
   });
   const config: ConfigService = app.get(ConfigService);
+  dotenv.config({ path: path.resolve('/Users/fleizean/Desktop/transdance/backend/.env') });
+
   const port: number = config.get<number>('PORT');
 
   const configSwagger = new DocumentBuilder()
-    .setTitle('ft_transcendence WebAPI')
-    .setDescription('The ft_transcendence API description')
+    .setTitle('Ft Transcendence API')
+    .setDescription('The Ft Transcendence API description')
     .setVersion('1.0')
-    .addTag('ft_transcendence')
+    .addTag('Ft Transcendence')
     .build();
 
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
   const document = SwaggerModule.createDocument(app, configSwagger);
+
+  // JSON dosyasını oluşturun ve kaydedin
+  fs.writeFileSync('swagger.json', JSON.stringify(document, null, 2));
+
   SwaggerModule.setup('api', app, document);
   await app.listen(port, () => {
     console.log('[WEB]', config.get<string>('BASE_URL'));

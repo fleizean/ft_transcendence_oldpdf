@@ -1,6 +1,6 @@
 import { UserLoginDto } from 'src/entities/dto/userLoginDto';
-import { RandomText } from '../../core/utilities/randomText/randomText';
-import { JwtHelper } from '../../core/utilities/security/jwt/jwtHelper';
+import { RandomText } from 'src/core/utilities/randomText/randomText';
+import { JwtHelper } from 'src/core/utilities/security/jwt/jwtHelper';
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { HashingHelper } from 'src/core/utilities/security/hashing/hashingHelper';
