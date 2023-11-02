@@ -152,6 +152,54 @@
           }
         }
       }
+    },
+    "/user-achievements/create/{userId}/{achievementId}": {
+      "post": {
+        "operationId": "UserAchievementController_createUserAchievement",
+        "parameters": [
+          {
+            "name": "userId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "achievementId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/user-achievements/user/{userId}": {
+      "get": {
+        "operationId": "UserAchievementController_getUserAchievementsByUser",
+        "parameters": [
+          {
+            "name": "userId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
     }
   },
   "info": {

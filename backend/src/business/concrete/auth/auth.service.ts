@@ -46,6 +46,7 @@ export class AuthService {
 			isStatus: false,
 			id: 0,
 			explanation: '',
+			userAchievements: [],
 		};
 
 		const successResult = await this.userService.add(user);

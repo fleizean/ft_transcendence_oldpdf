@@ -29,7 +29,8 @@ export class JwtHelper {
     const signingCredentials = this.signingCredentialsService.createSigningCredentials(
       this.tokenOptions.securityKey,
     );
-    // console.log(`Access token` + operationClaims[0])
+  /*   console.log(`Access token: ` + operationClaims[0])
+    console.log(`Access token2: ` + user) */
     const jwtPayload = this.createJwtPayload(user, operationClaims);    
     const token = this.jwtService.sign(jwtPayload,signingCredentials);
     return {

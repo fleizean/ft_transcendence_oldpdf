@@ -4,18 +4,15 @@ import { OperationClaim } from './operationClaim.entity';
 
 @Entity({ name: 'useroperationclaims' })
 export class UserOperationClaim {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
+  @Column()
+  userId: number;
+  @Column()
+  operationClaimId: number;
+  @ManyToOne(() => OperationClaim, (operationClaim) => operationClaim.userOperationClaims)
+  operationClaim: OperationClaim;
 
-    @Column()
-    userId: number;
-
-    @Column()
-    operationClaimId: number;
-
-    @ManyToOne(() => OperationClaim, (operationClaim) => operationClaim.userOperationClaims)
-    operationClaim: OperationClaim;
-
-    @ManyToOne(() => User, (user) => user.id)
-    user: User;
+  @ManyToOne(() => User, (user) => user.id)
+  user: User;
 }

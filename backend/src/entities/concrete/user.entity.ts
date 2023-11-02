@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { UserAchievements } from './userAchievement.entity';
 
 @Entity({ name: 'users' })
 export class User {
@@ -46,4 +47,8 @@ export class User {
 
     @Column({ nullable: true })
     isStatus: boolean;
+
+    @OneToMany(() => UserAchievements, userAchievements => userAchievements.user)
+    userAchievements: UserAchievements[];
+    
 }
