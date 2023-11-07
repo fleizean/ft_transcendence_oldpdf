@@ -6,10 +6,13 @@ import { OperationClaim } from './operationClaim.entity';
 export class UserOperationClaim {
   @PrimaryGeneratedColumn()
   id: number;
+
   @Column()
   userId: number;
+
   @Column()
   operationClaimId: number;
+
   @ManyToOne(() => OperationClaim, (operationClaim) => operationClaim.userOperationClaims)
   operationClaim: OperationClaim;
 

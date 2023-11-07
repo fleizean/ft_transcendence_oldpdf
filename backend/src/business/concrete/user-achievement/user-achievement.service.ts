@@ -30,12 +30,11 @@ export class UserAchievementService {
   async getUserAchievementsByUser(userId: number): Promise<any[]> {
     const userAchievements = await this.userAchievementRepository.find({
       where: { user: { id: userId } },
-      relations: ['achievement'], // 'achievement' ilişkisini getir
+      relations: ['achievement'], 
     });
   
-    // Kullanıcının başarımlarını döndüren bir dizi oluştur
     const achievementsWithDetails = userAchievements.map((ua) => {
-      const achievement = ua.achievement; // Bu şekilde ilişkilendirilmiş başarıma erişebilirsiniz
+      const achievement = ua.achievement;
       return {
         title: achievement.title,
         description: achievement.description,

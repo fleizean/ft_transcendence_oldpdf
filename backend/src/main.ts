@@ -6,7 +6,7 @@ import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as path from 'path';
 import * as dotenv from 'dotenv';
-import * as fs from 'fs'; // JSON dosyası oluşturmak için fs modülünü ekleyin
+import * as fs from 'fs';
 
 async function bootstrap() {
   const app: NestExpressApplication = await NestFactory.create(AppModule, {
@@ -18,7 +18,8 @@ async function bootstrap() {
     credentials: true,
   });
   const config: ConfigService = app.get(ConfigService);
-  dotenv.config({ path: path.resolve('/Users/fleizean/Desktop/transdance/backend/.env') });
+  dotenv.config({ path: path.resolve('/Users/fleizean/Desktop/transdance/backend/src/core/envs/.env') });
+  /* console.log("what is that: ", __dirname) */
 
   const port: number = config.get<number>('PORT');
 
@@ -32,7 +33,6 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
   const document = SwaggerModule.createDocument(app, configSwagger);
 
-  // JSON dosyasını oluşturun ve kaydedin
   fs.writeFileSync('swagger.json', JSON.stringify(document, null, 2));
 
   SwaggerModule.setup('api', app, document);

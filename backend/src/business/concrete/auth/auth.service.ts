@@ -83,6 +83,7 @@ export class AuthService {
 		user: User,
 	): Promise<IDataResult<AccessToken>> {
 		const claims = this.userService.getClaims(user);
+		console.log("test: ", (await claims).data)
 		const accessToken = this.tokenHelper.createToken(user, (await claims).data);
 		return new SuccessDataResult<AccessToken>(
 			accessToken,

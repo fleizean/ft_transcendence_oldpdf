@@ -89,20 +89,19 @@ export class UserService {
 
 	public async getClaims(user: User): Promise<IDataResult<OperationClaim[]>> {
 		const result = await this.operationClaimDal
-			.createQueryBuilder('operationClaim')
-			.innerJoin(
-				'operationClaim.userOperationClaims',
-				'userOperationClaim',
-				'userOperationClaim.userId = :userId',
-				{ userId: user.id },
-			)
-			.select([
-				'operationClaim.id',
-				'operationClaim.name',
-				'operationClaim.explanation',
-				'operationClaim.description',
-			])
-			.getMany();
+		  .createQueryBuilder('operationClaim')
+		  .innerJoin(
+			'operationClaim.userOperationClaims',
+			'userOperationClaim'
+		  )
+		  .where('userOperationClaim.userId = :userId', { userId: user.id })
+		  .select([
+			'operationClaim.id',
+			'operationClaim.name',
+			'operationClaim.explanation',
+			'operationClaim.description',
+		  ])
+		  .getMany();
 		return new SuccessDataResult<OperationClaim[]>(result, Messages.UserGetClaims);
 	}
 }
