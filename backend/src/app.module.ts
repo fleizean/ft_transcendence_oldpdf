@@ -10,6 +10,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { Auth42Module } from './modules/auth42/auth42.module';
 import { UserAchievementModule } from './modules/user-achievement/user-achievement.module';
 import { AuthGoogleModule } from './modules/auth-google/auth-google.module';
+import { UserOperationClaimsModule } from './modules/user-operationclaims/user-operationclaims.module';
 
 const envFilePath: string = getEnvPath(`/Users/fleizean/Desktop/transdance/backend/src/core/envs/.env`); // /Users/fleizean/Desktop/transdance/backend/src/core/envs/development.env
 console.log(envFilePath);
@@ -22,6 +23,7 @@ console.log(envFilePath);
     Auth42Module,
     AuthGoogleModule,
     UserAchievementModule,
+    UserOperationClaimsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

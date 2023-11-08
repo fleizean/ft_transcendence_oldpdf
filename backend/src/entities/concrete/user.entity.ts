@@ -36,7 +36,7 @@ export class User {
     @Column({ length: 50, nullable: false }) // length 6~10?
     verificationCode: string;
 
-    @Column({ type: 'timestamp without time zone', nullable: true })
+    @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', nullable: true })
     updateTime: Date;
 
     @Column({ length: 50, nullable: true })
@@ -50,5 +50,4 @@ export class User {
 
     @OneToMany(() => UserAchievements, userAchievements => userAchievements.user)
     userAchievements: UserAchievements[];
-    
 }
