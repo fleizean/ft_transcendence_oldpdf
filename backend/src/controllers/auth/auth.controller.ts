@@ -43,8 +43,8 @@ import {
         lastName: request.body.lastName,
         nickName: request.body.nickName,
       };
-      /* console.log('request.body.firstName', request.body.firstName)
-      console.log('request.body.lastname', request.body.lastName) */
+      console.log('request.body.firstName', request.body.firstName)
+      console.log('request.body.lastname', request.body.lastName)
       const userExists = this.authService.userExists(UserRegisterDto);
       if (!(await userExists).success) {
         return response.status(HttpStatus.BAD_REQUEST).send(await userExists);

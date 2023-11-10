@@ -13,7 +13,10 @@ import { IResult } from 'src/core/utilities/result/abstract/iResult';
 import { ErrorResult } from 'src/core/utilities/result/concrete/result/errorResult';
 import { SuccessResult } from 'src/core/utilities/result/concrete/result/successResult';
 import { Messages } from 'src/business/const/messages';
-
+import { UserOperationClaimService } from '../user-operationclaims/user-operationclaims.service';
+import { UserOperationClaim } from 'src/core/entities/concrete/userOperationClaim.entity';
+import { OperationClaimService } from '../operationclaims/operationclaims.service';
+import { OperationClaim } from 'src/core/entities/concrete/operationClaim.entity';
 
 @Injectable()
 export class AuthService {
@@ -21,6 +24,8 @@ export class AuthService {
 		private userService: UserService,
 		private readonly hashingHelper: HashingHelper,
 		private readonly tokenHelper: JwtHelper,
+/* 		private readonly operationClaimService: OperationClaimService,
+		private readonly userRoleService: UserOperationClaimService, */
 	) { }
 
 	public async register(
@@ -50,7 +55,17 @@ export class AuthService {
 		};
 
 		const successResult = await this.userService.add(user);
-
+/* 		const operationClaim = (await this.operationClaimService.getById(1)).data;
+	  
+		const userRole: UserOperationClaim = {
+			id: 0,
+			userId: user.id,
+			operationClaimId: 1,
+			operationClaim: operationClaim,
+			user: user,
+		};
+		const roleResult = await this.userRoleService.add(userRole);
+ */
 		if (!successResult.success)
 			return new ErrorDataResult<User>(user, successResult.message);
 		return new SuccessDataResult<User>(user, Messages.UserRegistered);
@@ -83,7 +98,6 @@ export class AuthService {
 		user: User,
 	): Promise<IDataResult<AccessToken>> {
 		const claims = this.userService.getClaims(user);
-		console.log("test: ", (await claims).data)
 		const accessToken = this.tokenHelper.createToken(user, (await claims).data);
 		return new SuccessDataResult<AccessToken>(
 			accessToken,

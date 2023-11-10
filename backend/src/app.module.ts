@@ -11,8 +11,9 @@ import { Auth42Module } from './modules/auth42/auth42.module';
 import { UserAchievementModule } from './modules/user-achievement/user-achievement.module';
 import { AuthGoogleModule } from './modules/auth-google/auth-google.module';
 import { UserOperationClaimsModule } from './modules/user-operationclaims/user-operationclaims.module';
+import { OperationClaimsModule } from './modules/operationclaims/operationclaims.module';
 
-const envFilePath: string = getEnvPath(`/Users/fleizean/Desktop/transdance/backend/src/core/envs/.env`); // /Users/fleizean/Desktop/transdance/backend/src/core/envs/development.env
+const envFilePath: string = getEnvPath(`${__dirname}/core/envs`); // /Users/fleizean/Desktop/transdance/backend/src/core/envs/development.env
 console.log(envFilePath);
 @Module({
   imports: [
@@ -24,6 +25,7 @@ console.log(envFilePath);
     AuthGoogleModule,
     UserAchievementModule,
     UserOperationClaimsModule,
+    OperationClaimsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

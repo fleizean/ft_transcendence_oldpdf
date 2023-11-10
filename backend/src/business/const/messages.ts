@@ -63,5 +63,18 @@ export class Messages {
     public static readonly GameScoreGetAll: string = 'GameScore Get All';
     public static readonly GameScoreGetById: string = 'GameScore Get By Id';
     public static readonly GameScoreNotFound: string = 'GameScore Not Found';
+
+    static OperationClaimGetAll: string;
+    static OperationClaimGetById: string;
+    static OperationClaimAdded: string;
+    static OperationClaimNotFound: string;
+    static OperationClaimUpdate: string;
+    static OperationClaimDeleted: string;
+    static UserOperationClaimGetAll: string;
+    static UserOperationClaimGetById: string;
+    static UserOperationClaimAdded: string;
+    static UserOperationClaimNotFound: string;
+    static UserOperationClaimUpdate: string;
+    static UserOperationClaimDeleted: string;
   }
   
