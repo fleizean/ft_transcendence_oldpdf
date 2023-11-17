@@ -1,5 +1,5 @@
 import { UserLoginDto } from '../../../entities/dto/UserLoginDto';
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject ,Injectable } from '@nestjs/common';
 import { ErrorDataResult } from 'src/core/utilities/result/concrete/dataResult/errorDataResult';
 import { SuccessDataResult } from 'src/core/utilities/result/concrete/dataResult/successDataResult';
 import { User } from 'src/entities/concrete/user.entity';
@@ -24,7 +24,7 @@ export class AuthService {
 		private userService: UserService,
 		private readonly hashingHelper: HashingHelper,
 		private readonly tokenHelper: JwtHelper,
-/* 		private readonly operationClaimService: OperationClaimService,
+		/* private readonly operationClaimService: OperationClaimService,
 		private readonly userRoleService: UserOperationClaimService, */
 	) { }
 
