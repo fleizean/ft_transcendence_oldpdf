@@ -200,6 +200,28 @@
           }
         }
       }
+    },
+    "/achievements/create": {
+      "post": {
+        "operationId": "AchievementController_createAchievement",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/achievements/getall": {
+      "get": {
+        "operationId": "AchievementController_getAll",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
     }
   },
   "info": {

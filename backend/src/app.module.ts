@@ -12,6 +12,7 @@ import { UserAchievementModule } from './modules/user-achievement/user-achieveme
 import { AuthGoogleModule } from './modules/auth-google/auth-google.module';
 import { UserOperationClaimsModule } from './modules/user-operationclaims/user-operationclaims.module';
 import { OperationClaimsModule } from './modules/operationclaims/operationclaims.module';
+import { AchievementModule } from './modules/achievement/achievement.module';
 
 const envFilePath: string = getEnvPath(`${__dirname}/core/envs`); // /Users/fleizean/Desktop/transdance/backend/src/core/envs/development.env
 console.log(envFilePath);
@@ -26,6 +27,7 @@ console.log(envFilePath);
     UserAchievementModule,
     UserOperationClaimsModule,
     OperationClaimsModule,
+    AchievementModule,
   ],
   controllers: [AppController],
   providers: [AppService],
