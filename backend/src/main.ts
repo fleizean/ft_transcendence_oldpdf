@@ -24,8 +24,8 @@ async function bootstrap() {
   const port: number = config.get<number>('PORT');
 
   const configSwagger = new DocumentBuilder()
-    .setTitle('Ft Transcendence API')
-    .setDescription('The Ft Transcendence API description')
+    .setTitle('Transcendence API')
+    .setDescription('description')
     .setVersion('1.0')
     .build();
 
