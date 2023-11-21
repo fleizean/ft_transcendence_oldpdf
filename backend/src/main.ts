@@ -18,7 +18,7 @@ async function bootstrap() {
     credentials: true,
   });
   const config: ConfigService = app.get(ConfigService);
-  dotenv.config({ path: path.resolve('/Users/fleizean/Desktop/transdance/backend/src/core/envs/.env') });
+  // dotenv.config({ path: path.resolve('/Users/fleizean/Desktop/transdance/backend/src/core/envs/.env') });
   /* console.log("what is that: ", __dirname) */
 
   const port: number = config.get<number>('PORT');
@@ -27,7 +27,6 @@ async function bootstrap() {
     .setTitle('Ft Transcendence API')
     .setDescription('The Ft Transcendence API description')
     .setVersion('1.0')
-    .addTag('Ft Transcendence')
     .build();
 
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));

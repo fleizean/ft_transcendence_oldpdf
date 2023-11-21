@@ -230,12 +230,7 @@
     "version": "1.0",
     "contact": {}
   },
-  "tags": [
-    {
-      "name": "Ft Transcendence",
-      "description": ""
-    }
-  ],
+  "tags": [],
   "servers": [],
   "components": {
     "schemas": {}
